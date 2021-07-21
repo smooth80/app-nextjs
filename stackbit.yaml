@@ -19,6 +19,7 @@ logicFields:
   - grid_section.background_image_opacity
   - cta_section.background_image_opacity
   - form_section.background_image_opacity
+nodeVersion: 12
 models:
   config:
     type: data
@@ -281,7 +282,8 @@ models:
         name: anncmnt_id
         label: Announcement ID
         description: >-
-          A unique identifier, required if close button is enabled. Must be updated each time the announcement content changes
+          A unique identifier, required if close button is enabled. Must be
+          updated each time the announcement content changes
   person:
     type: data
     label: Person
@@ -351,7 +353,8 @@ models:
     type: page
     label: Page
     layout: page
-    exclude: blog/**/*
+    exclude:
+      - blog/**/*
     fields:
       - type: string
         name: title
@@ -362,6 +365,7 @@ models:
         name: seo
         models:
           - stackbit_page_meta
+        label: Seo
   post:
     type: page
     urlPath: '/blog/{slug}'
@@ -445,6 +449,7 @@ models:
         name: seo
         models:
           - stackbit_page_meta
+        label: Seo
   advanced:
     type: page
     label: Advanced page
@@ -473,6 +478,7 @@ models:
         name: seo
         models:
           - stackbit_page_meta
+        label: Seo
   section:
     type: object
     label: Section
@@ -481,7 +487,7 @@ models:
       - type: string
         name: section_id
         label: Section ID
-        description: A unique identifier of the section, must not contain whitespace
+        description: 'A unique identifier of the section, must not contain whitespace'
       - type: string
         name: title
         label: Title
@@ -489,9 +495,15 @@ models:
   hero_section:
     type: object
     label: Hero section
-    extends:
-      - section
     fields:
+      - type: string
+        name: section_id
+        label: Section ID
+        description: 'A unique identifier of the section, must not contain whitespace'
+      - type: string
+        name: title
+        label: Title
+        description: The title of the section
       - type: string
         name: subtitle
         label: Subtitle
@@ -628,12 +640,19 @@ models:
           - no-repeat
         default: no-repeat
         description: Repeat the image to cover the whole area
+    labelField: title
   features_section:
     type: object
     label: Features section
-    extends:
-      - section
     fields:
+      - type: string
+        name: section_id
+        label: Section ID
+        description: 'A unique identifier of the section, must not contain whitespace'
+      - type: string
+        name: title
+        label: Title
+        description: The title of the section
       - type: string
         name: subtitle
         label: Subtitle
@@ -741,12 +760,19 @@ models:
           - no-repeat
         default: no-repeat
         description: Repeat the image to cover the whole area
+    labelField: title
   grid_section:
     type: object
     label: Grid section
-    extends:
-      - section
     fields:
+      - type: string
+        name: section_id
+        label: Section ID
+        description: 'A unique identifier of the section, must not contain whitespace'
+      - type: string
+        name: title
+        label: Title
+        description: The title of the section
       - type: string
         name: subtitle
         label: Subtitle
@@ -889,12 +915,19 @@ models:
           - no-repeat
         default: no-repeat
         description: Repeat the image to cover the whole area
+    labelField: title
   blog_feed_section:
     type: object
     label: Blog feed section
-    extends:
-      - section
     fields:
+      - type: string
+        name: section_id
+        label: Section ID
+        description: 'A unique identifier of the section, must not contain whitespace'
+      - type: string
+        name: title
+        label: Title
+        description: The title of the section
       - type: string
         name: subtitle
         label: Subtitle
@@ -1065,12 +1098,19 @@ models:
           - no-repeat
         default: no-repeat
         description: Repeat the image to cover the whole area
+    labelField: title
   cta_section:
     type: object
     label: CTA section
-    extends:
-      - section
     fields:
+      - type: string
+        name: section_id
+        label: Section ID
+        description: 'A unique identifier of the section, must not contain whitespace'
+      - type: string
+        name: title
+        label: Title
+        description: The title of the section
       - type: markdown
         name: content
         label: Content
@@ -1191,12 +1231,19 @@ models:
           - no-repeat
         default: no-repeat
         description: Repeat the image to cover the whole area
+    labelField: title
   form_section:
     type: object
     label: Form section
-    extends:
-      - section
     fields:
+      - type: string
+        name: section_id
+        label: Section ID
+        description: 'A unique identifier of the section, must not contain whitespace'
+      - type: string
+        name: title
+        label: Title
+        description: The title of the section
       - type: string
         name: subtitle
         label: Subtitle
@@ -1372,6 +1419,7 @@ models:
           - no-repeat
         default: no-repeat
         description: Repeat the image to cover the whole area
+    labelField: title
   feature:
     type: object
     label: Feature
@@ -1582,6 +1630,9 @@ models:
       - type: list
         name: options
         description: 'The list of options, used only when the field type is "select"'
+        label: Options
+        items:
+          type: string
       - type: boolean
         name: is_required
         label: Is the field required?
@@ -1686,11 +1737,15 @@ models:
             - type: string
               name: name
               default: ''
+              label: Name
             - type: string
               name: value
               default: ''
+              label: Value
             - type: string
               name: keyName
               default: name
+              label: Key Name
             - type: boolean
               name: relativeUrl
+              label: Relative Url

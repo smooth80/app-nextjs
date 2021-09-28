@@ -19,7 +19,7 @@ logicFields:
   - grid_section.background_image_opacity
   - cta_section.background_image_opacity
   - form_section.background_image_opacity
-nodeVersion: 12
+nodeVersion: 16
 models:
   config:
     type: data
